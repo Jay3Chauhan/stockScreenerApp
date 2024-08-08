@@ -22,10 +22,13 @@ async function fetchNseData(index) {
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
       },
     });
+     httpsAgent: new https.Agent({
+    rejectUnauthorized: false, // Disable SSL verification
+  }),
     console.log('Response from NSE API:', response.status);
     return response.data;
   } catch (error) {
-    console.error('Error fetching data from NSE API:', error);
+   console.error('Error fetching data from NSE API:', error.response ? error.response.data : error.message);
     throw error; // Re-throw for handling in route handler
   }
 }
