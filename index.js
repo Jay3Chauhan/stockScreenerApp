@@ -4,7 +4,7 @@ const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
 
 const app = express();
-const port = 3003;
+const port = 10000;
 
 const NSE_API_URL = 'https://www.nseindia.com/api/live-analysis-variations?index=';
 
