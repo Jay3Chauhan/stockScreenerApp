@@ -2,11 +2,14 @@ const express = require('express');
 const axios = require('axios');
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const http = require('http');
+const cors = require('cors'); // Add this
 const app = express();
-const port = 10000;
+const port = 3003;
 
 const NSE_API_URL = 'https://www.nseindia.com/api/live-analysis-variations?index=';
+
+// Enable CORS for all routes
+app.use(cors()); // Add this
 
 // Function to fetch data from the NSE API
 async function fetchNseData(index) {
@@ -17,7 +20,7 @@ async function fetchNseData(index) {
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
       },
     });
-       console.log('Response from NSE API:', response.status);
+    console.log('Response from NSE API:', response.status);
     return response.data;
   } catch (error) {
     console.error('Error fetching data from NSE API:', error);
