@@ -7,7 +7,9 @@ const app = express();
 const port = 10000;
 
 const NSE_API_URL = 'https://www.nseindia.com/api/live-analysis-variations?index=';
-
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 // Enable CORS for all routes
 app.use(cors()); // Add this
 
