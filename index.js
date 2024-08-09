@@ -20,15 +20,23 @@ async function fetchNseData(index) {
       headers: {
         "User-Agent":
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Connection": "keep-alive",
+        "Host": "www.nseindia.com",
+        "Referer": "https://www.nseindia.com/",
+        "Upgrade-Insecure-Requests": "1",
+        "Sec-Fetch-Dest": "document",
+        "Sec-Fetch-Mode": "navigate",
+        "Sec-Fetch-Site": "none",
+        "Sec-Fetch-User": "?1",
+        "TE": "Trailers",
       },
     });
-     httpsAgent: new https.Agent({
-    rejectUnauthorized: false, // Disable SSL verification
-  }),
     console.log('Response from NSE API:', response.status);
     return response.data;
   } catch (error) {
-   console.error('Error fetching data from NSE API:', error.response ? error.response.data : error.message);
+    console.error('Error fetching data from NSE API:', error.response?.status, error.message);
     throw error; // Re-throw for handling in route handler
   }
 }
